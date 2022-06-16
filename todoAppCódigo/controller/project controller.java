@@ -18,7 +18,7 @@ public class ProjectController {
                 + " description,"
                 + "createdAt,"
                 + "updatedAt) VALUES ( ?, ?, ?, ?)";
-        
+    
         Connection connection = null;
         PreparedStatement statement = null;
     
@@ -28,8 +28,8 @@ public class ProjectController {
     
             statement.setString(1, project.getName());
             statement.setString(2, project.getDescription());
-            statement.setDate(3, new Date(project.getCreatedAt().getTime()));
-            statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+            statement.setDate(3, new Date(project.getCreatedAt()));
+            statement.setDate(4, new Date(project.getCreatedAt()));
             statement.execute();
     
         } catch (SQLException ex) {
@@ -45,8 +45,8 @@ public class ProjectController {
                 + "name = ?, "
                 + "description = ?, "
                 + "createdAt = ?, "
-                + "updatedAt = ?, "
-                + "WHERE id = ?";
+                + "updatedAt = ? "
+                + "WHERE id = ? ";
     
         Connection connection = null;
         PreparedStatement statement = null;
@@ -57,8 +57,8 @@ public class ProjectController {
     
             statement.setString(1, project.getName());
             statement.setString(2, project.getDescription());
-            statement.setDate(3, new Date(project.getCreatedAt().getTime()));
-            statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+            statement.setDate(3, new Date(project.getCreatedAt()));
+            statement.setDate(4, new Date(project.getUpdatedAt()));
             statement.setInt(5, project.getId());
     
             statement.execute();
@@ -92,7 +92,7 @@ public class ProjectController {
             while (resultSet.next()) {
     
                 Project project = new Project();
-                
+    
                 project.setId(resultSet.getInt("id"));
                 project.setName(resultSet.getString("name"));
                 project.setDescription(resultSet.getString("description"));

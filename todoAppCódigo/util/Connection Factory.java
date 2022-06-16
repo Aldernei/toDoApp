@@ -11,17 +11,17 @@ public class ConnectionFactory {
     public static final String URL = "jdbc:mysql://localhost:3306/todoApp";
     public static final String USER = "root";
     public static final String PASS = "";
-    
+
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (Exception ex) {
-    
+
             throw new RuntimeException("Erro na conexão com o banco de dados", ex);
         }
     }
-    
+
     public static void CloseConnection(Connection connection) {
         try {
             if (connection != null) {
@@ -31,7 +31,7 @@ public class ConnectionFactory {
             throw new RuntimeException("Erro ao fechar a conexão com o banco de dados", ex);
         }
     }
-    
+
     public static void CloseConnection(Connection connection, PreparedStatement statement) {
         try {
             if (connection != null) {
@@ -44,7 +44,7 @@ public class ConnectionFactory {
             throw new RuntimeException("Erro ao fechar a conexão com o banco de dados", ex);
         }
     }
-    
+
     public static void CloseConnection(Connection connection, PreparedStatement statement,
             ResultSet resultSet) {
         try {
@@ -56,21 +56,21 @@ public class ConnectionFactory {
             }
             if (resultSet != null) {
                 resultSet.close();
-    
+
             }
         } catch (Exception ex) {
             throw new RuntimeException("Erro ao fechar a conexão com o banco de dados", ex);
         }
     }
-    
+
     public static Connection GetConnection() {
        return null;
     }
-    
+
     public static void closeConnection(Connection connection, PreparedStatement statement) {
         
     }
-    
+
     public static void closeConnection(Connection connection, PreparedStatement statement, ResultSet resultSet) {
        
     }

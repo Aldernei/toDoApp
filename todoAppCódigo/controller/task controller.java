@@ -54,7 +54,7 @@ public class TaskController {
                 + "completed = ?,"
                 + "deadline = ?,"
                 + "createdAt = ?,"
-                + "updatedAt = ?,"
+                + "updatedAt = ?"
                 + "WHERE id = ?";
     
         Connection connection = null;
@@ -125,7 +125,7 @@ public class TaskController {
         ResultSet resultSet = null;
     
         //Lista devolvida quando a chamada do método acontecer
-        ArrayList<task> tasks = new ArrayList<task>();
+        ArrayList<task> tasks = new ArrayList<>();
     
         try {
             //Criação da conexão
@@ -140,9 +140,10 @@ public class TaskController {
 
 
 ​            
-            //Enquanto houverem valores a serem percorridos no resultSet
-            while (resultSet.next()) {
-    
+​            //Enquanto houverem valores a serem percorridos no resultSet
+​            while (resultSet.next()) {
+​    
+
                 task task = new task();
                 task.setId(resultSet.getInt("id"));
                 task.setIdProject(resultSet.getInt("idProject"));
@@ -167,4 +168,5 @@ public class TaskController {
         //Lista de tarefas que foi criada e carregada no banco de dados
         return tasks;
     }
+
 }
